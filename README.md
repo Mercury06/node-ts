@@ -1,2 +1,2 @@
 # node-ts
-typescript configuration for node server
+eslint & babel configuration for node server
