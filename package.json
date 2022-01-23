@@ -2,9 +2,12 @@
   "name": "ts",
   "version": "1.0.0",
   "description": "typescript configuration for node server",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
+    "dev": "node dev.js",
+    "lint:js": "eslint ./src"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,31 @@
   },
   "homepage": "https://github.com/Mercury06/node-ts#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "eslint": "^8.7.0",
-    "eslint-config-airbnb-base": "^15.0.0"
+    "eslint-config-airbnb-base": "^15.0.0",
+    "lodash": "^4.17.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "airbnb-base",
+    "env": {
+      "node": true
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   }
 }
